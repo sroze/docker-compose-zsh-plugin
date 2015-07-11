@@ -6,7 +6,7 @@ function is_dock_project() {
 
 function dock_status() {
     if [ $(is_dock_project) ]; then
-        echo -n " dock:("
+        echo -n "dock:("
         docker-compose ps 2>/dev/null | tail -n+3 | while read line
         do
             CONTAINER_LETTER_POSITION=$(echo $line | awk 'match($0,"_"){print RSTART}')
@@ -17,7 +17,7 @@ function dock_status() {
                 echo -n "%{$fg_bold[red]%}"$CONTAINER_LETTER"%{$fg_bold[blue]%}"
             fi
         done
-        echo -n ") "
+        echo -n ")"
     fi
 }
 
