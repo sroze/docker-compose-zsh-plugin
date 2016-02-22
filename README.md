@@ -4,6 +4,7 @@ Add an extra flavor to your ZSH prompt, displaying the machine's name (if isn't 
 containers.
 
 *`dev_test` the machine's name*
+
 ![Example of display](example-screenshot.png)
 
 ## Getting started
