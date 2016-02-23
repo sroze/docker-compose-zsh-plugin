@@ -6,7 +6,10 @@ function is_dock_project() {
 
 function dock_status() {
     if [ $(is_dock_project) ]; then
-        echo -n "dock:("
+        if [[ $DOCKER_MACHINE_NAME != "" && $DOCKER_MACHINE_NAME != "default" ]]; then
+          DOCKER_MACHINE_NAME_LOCAL="%{$fg_bold[red]%}"$DOCKER_MACHINE_NAME"%{$fg_bold[blue]%}:"
+        fi
+        echo -n " dock:("$DOCKER_MACHINE_NAME_LOCAL
         docker-compose ps 2>/dev/null | tail -n+3 | while read line
         do
             CONTAINER_LETTER_POSITION=$(echo $line | awk 'match($0,"_"){print RSTART}')
